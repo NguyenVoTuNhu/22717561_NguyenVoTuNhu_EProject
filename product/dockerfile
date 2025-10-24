@@ -1,0 +1,20 @@
+# auth/Dockerfile
+FROM node:18
+
+# Thiết lập thư mục làm việc
+WORKDIR /app
+
+# Copy file package.json và package-lock.json
+COPY package*.json ./
+
+# Cài dependencies
+RUN npm install
+
+# Copy toàn bộ code
+COPY . .
+
+# Expose port của service
+EXPOSE 3001
+
+# Chạy service
+CMD ["npm", "start"]
